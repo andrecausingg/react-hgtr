@@ -2,11 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/react-hgtr/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-    <script type="module" crossorigin src="/react-hgtr/assets/index-1080fc92.js"></script>
-    <link rel="stylesheet" href="/react-hgtr/assets/index-d526a0c5.css">
+    <title>Hugutero</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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">
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script type="module" crossorigin src="/react-hgtr/assets/index-67eaae00.js"></script>
+    <link rel="stylesheet" href="/react-hgtr/assets/index-bf63e508.css">
   </head>
   <body>
     <div id="root"></div>
