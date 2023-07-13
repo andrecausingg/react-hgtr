@@ -1,0 +1,28 @@
+.grid-container-2csm-3cm-6cl, .grid-container-1csm-2cm-4cl{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.grid-container-2csm-3cm-6cl{ // 2 col small deceice - 3 col medium device - 6 col large device
+    grid-template-columns: auto auto;
+}
+
+.grid-container-1csm-2cm-4cl{ // 1 col small deceice - 2 col medium device - 4 col large device
+    grid-template-columns: auto;
+}
+
+.grid-container-2csm{
+    width: 100%;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: auto auto; // 2 col small deceice
+}
+
+// admin
+.grid-container-1cl-2cxl{
+    width: 100%;
+    display: grid;
+}
+

@@ -1,0 +1,32 @@
+$yot-padding-values: (
+  0: 0rem,
+  4: 0.25rem,
+  8: 0.5rem,
+  16: 1rem,
+  24: 1.5rem,
+  48: 3rem,
+);
+
+@each $value, $size in $yot-padding-values {
+  .yot-pt-#{$value} {
+    padding-top: $size;
+  }
+  .yot-pr-#{$value} {
+    padding-right: $size;
+  }
+  .yot-pb-#{$value} {
+    padding-bottom: $size;
+  }
+  .yot-pl-#{$value} {
+    padding-left: $size;
+  }
+  .yot-ptb-#{$value} {
+    padding: $size 0;
+  }
+  .yot-plr-#{$value} {
+    padding: 0 $size 0 $size;
+  }
+  .yot-pa-#{$value} {
+    padding: $size;
+  }
+}

@@ -1,0 +1,29 @@
+/* Set the scrollbar color to white */
+.yot-scrollbar-white::-webkit-scrollbar {
+    width: 10px;
+}
+  
+.yot-scrollbar-white::-webkit-scrollbar-track {
+    background-color: $yot-black3;
+}
+  
+.yot-scrollbar-white::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 5px;
+}
+  
+
+/* Set the scrollbar color to black1 */
+.yot-scrollbar-black1::-webkit-scrollbar {
+    width: 10px;
+}
+  
+.yot-scrollbar-black1::-webkit-scrollbar-track {
+    background-color: $yot-black1;
+}
+  
+.yot-scrollbar-black1::-webkit-scrollbar-thumb {
+    background-color: $yot-white;
+    border-radius: 5px;
+}
+  

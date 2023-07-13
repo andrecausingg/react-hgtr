@@ -1,0 +1,72 @@
+
+.yot-btn-black2{
+    border: none;
+    display: inline-block;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition-delay: 0.1s; /* add a delay of 0.3 seconds */
+
+    color: $yot-black;
+    background-color: $yot-white;
+}
+
+.yot-btn-black2:hover{
+    color: $yot-white;
+    background-color: $yot-black;
+}
+
+
+.yot-btn-active-blue1{
+    color: $yot-white !important;
+    background-color: $yot-blue1 !important;
+}
+
+.yot-btn-blue1{
+    border: none;
+    display: inline-block;
+    padding: 8px 24px;
+    cursor: pointer;
+
+    color: $yot-black;
+    background-color: $yot-white;
+    border: 1px solid $yot-black;
+
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition-delay: 0.1s; /* add a delay of 0.3 seconds */
+}
+
+.yot-btn-blue1:hover{
+    color: $yot-white;
+    background-color: $yot-blue1;
+    border: 1px solid $yot-blue1;
+}
+
+.yot-btn-active-blue1{
+    color: $yot-white !important;
+    background-color: $yot-blue1 !important;
+}
+
+.yot-btn-black4{
+    border: none;
+    display: inline-block;
+    padding: 8px 24px;
+    cursor: pointer;
+
+    color: $yot-black;
+    background-color: $yot-white;
+    border: 1px solid $yot-black4;
+
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition-delay: 0.1s; /* add a delay of 0.3 seconds */
+}
+
+.yot-btn-black4:hover{
+    color: $yot-white;
+    background-color: $yot-black4;
+}
+
+// Shape Btn
+.yot-btn-shape-round{
+    border-radius: 25px;
+}

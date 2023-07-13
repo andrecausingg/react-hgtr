@@ -1,0 +1,54 @@
+.yot-active-nav-aside{
+    a{
+        margin-bottom: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Add transition */
+        border-radius: 4px;
+    }
+
+    a:hover{
+        background-color: $yot-black4;
+    }
+}
+
+.yot-active-nav-aside{
+    li{
+        margin-bottom: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Add transition */
+        border-radius: 4px;
+    }
+
+    li:hover{
+        background-color: $yot-black4;
+    }
+}
+
+// active border bottom white
+.yot-nav-active-nav-aside-bb-a-white{
+    a{
+        cursor: pointer;
+        margin: 4px 0px;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease; /* Add transition */
+    }
+
+    a:hover{
+        border-bottom: 2px solid $yot-white;
+    }
+}
+
+
+// active border bottom 
+.yot-nav-active-nav-aside-bb-a-black4{
+    a{
+        cursor: pointer;
+        margin: 4px 0px;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease; /* Add transition */
+    }
+
+    a:hover{
+        border-bottom: 2px solid $yot-black4;
+    }
+}

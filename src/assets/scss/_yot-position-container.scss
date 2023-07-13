@@ -1,0 +1,19 @@
+.yot-pc-parent{
+    position: relative;
+}
+
+.yot-pc-top{
+    position: absolute;
+    top: 0;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%); /* This is a shorthand of
+                                         translateX(-50%) and translateY(-50%) */
+}
+
+.yot-pc-bottom{
+    position: absolute;
+    bottom: 0px;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%,0); /* This is a shorthand of
+                                         translateX(-50%) and translateY(-50%) */
+}

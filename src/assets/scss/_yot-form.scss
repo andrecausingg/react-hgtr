@@ -1,0 +1,125 @@
+// Form Container
+.yot-form-container{
+    width: 300px;
+}
+
+// Label and Etc Group
+.yot-form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+// Group With Icon
+.yot-form-group-container{
+    position: relative;
+}
+.yot-form-group-icon-left{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 24px;
+}
+.yot-form-group-icon-right{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 24px;
+}
+.yot-form-group-label{
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    font-size: $yot-fs-xsm;
+}
+
+// Input Padding Left Only
+.yot-form-group-input-text-l{
+    padding-left: 40px !important;
+}
+
+// Input Padding Right Only
+.yot-form-group-input-text-l{
+    padding-right: 40px !important;
+}
+
+// Input Padding Left and Right
+.yot-form-group-input-text-lr{
+    padding-left:40px !important;
+    padding-right:40px !important;
+}
+
+// Correct Input 
+.yot-form-input-good{
+    border: 1px solid $yot-green !important;
+}
+
+// Error Input 
+.yot-form-input-bad{
+    border: 1px solid $yot-red !important;
+}
+
+// Disable input
+.yot-form-input-disabled{
+    cursor: not-allowed;
+    background-color: $yot-black3;
+}
+
+// Input Css
+.yot-form-input{
+    width: 100%;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    border: none;
+    font-size: 16px;
+    border: 1px solid $yot-black3;
+
+    // color: $yot-white !important;
+    // background-color: $yot-black1;
+}
+.yot-form-input:focus{
+    outline: none !important;
+    // background-color: $yot-orange;
+}
+
+.yot-form-input-ls{
+    width: 100%;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    border: none;
+    color: $yot-white !important;
+    border-top: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid $yot-white;
+    border-left: 2px solid transparent;
+    background-color: $yot-black1;
+    font-size: 16px;
+}
+
+.yot-form-input-ls:focus{
+    outline: none !important;
+    border: 2px solid $yot-orange;
+}
+
+
+// Select Css
+.yot-form-select{
+    padding: 16px;
+    font-size: 16px;
+    color: white;
+    background-color: $yot-blue1;
+    border: none;
+    border-radius: 5px;
+}
+.yot-form-select:focus {
+    outline: none;
+}
+.yot-form-select option{
+    height: 50px;
+    line-height: 50px; /* Vertically center text within option */
+    padding: 0 16px; /* Add horizontal padding to option */
+    color: $yot-white;
+    background-color: $yot-blue1;
+}

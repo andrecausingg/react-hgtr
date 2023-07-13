@@ -1,0 +1,98 @@
+                                /* 576px */
+@media only screen and (min-width: 36em){  /* Small devices (portrait tablets and large phones)*/
+    html {
+        font-size: 1.2rem !important;
+    }
+    // Don't Remove Top
+}
+                                /* 768px */
+@media only screen and (min-width: 48em){ /* Medium devices (landscape tablets) */
+    html {
+        font-size: 1.4rem !important;
+    }
+
+    .yot-overlay-left, .yot-overlay-right{
+        width: 41.66% !important;
+    }
+
+    .grid-container-2csm-3cm-6cl{
+        grid-template-columns: auto auto auto !important;
+    }
+
+    .grid-container-1csm-2cm-4cl{
+        grid-template-columns: auto auto !important;
+    }
+
+    .form-width-m-400{
+        width: 400px !important;
+    }
+
+    .form-width-m-500{
+        width: 500px !important;
+    }
+
+    .form-width-m-700{
+        width: 700px !important;
+    }
+
+    .yot-alert-container{
+        top: 20px !important;
+        width: 400px !important;
+    }
+
+    // Don't Remove Top
+    .crud-select-tag{
+        width: 33.33% !important;
+    }
+}
+
+                                /* 992px */
+@media only screen and (min-width: 62em){ /* Large devices (laptops/desktops) */
+    // html {
+    //     font-size: 1.6rem !important;
+    // }
+    
+    .grid-container-2csm-3cm-6cl{
+        grid-template-columns: auto auto auto auto auto auto !important;
+    }
+
+    .grid-container-1csm-2cm-4cl{
+        grid-template-columns: auto auto auto auto!important;
+    }
+    // Don't Remove Top
+    .crud-select-tag{
+        width: 25% !important;
+    }
+}
+
+                                /* 1200px */
+@media only screen and (min-width: 75em){  /* Extra large devices (large laptops and desktops, 1200px and up) */
+    .grid-container-1cl-2cxl{
+        grid-template-columns: 20% 80% !important;
+    }
+
+    .grid-container-1csm-2cm-4cl{
+        grid-template-columns: auto auto auto auto !important;
+    }
+
+    .removeMarginTop80Em{
+        margin-top: 0 !important;
+    }
+    .right-container-margin-25percent{
+        margin-left: 20% !important;
+    }
+    .g-child-container-left{
+        width: 20% !important;
+    }
+    .g-child-container-right{
+        width: 80% !important;
+    }
+
+    .form-width-l-1000{
+        width: 1000px !important;
+    }
+    // Don't Remove Top
+}
+                                /* 1400px */
+@media only screen and (min-width: 87.5em){ /* Tv */
+}

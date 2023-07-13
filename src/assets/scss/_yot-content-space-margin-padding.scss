@@ -1,0 +1,39 @@
+// ======================================== //
+//     Content Space MARGIN & PADDING        //
+// ======================================== //
+
+$yot-content-space-values: (0: 0rem, 48: 3rem, 80: 5rem, 120: 7.5rem, 160: 10rem, 200: 12.5rem);
+
+@each $value, $rem in $yot-content-space-values {
+
+  // Margin Top
+  .yot-content-space-mt-#{$value} {
+    margin-top: $rem;
+  }
+
+  // Margin Bottom
+  .yot-content-space-mb-#{$value} {
+    margin-bottom: $rem;
+  }
+
+  // Margin Top & Bottom
+  .yot-content-space-mtb-#{$value} {
+    margin: $rem 0;
+  }
+
+  // Padding Top
+  .yot-content-space-pt-#{$value} {
+    padding-top: $rem;
+  }
+
+  // Padding Bottom
+  .yot-content-space-pb-#{$value} {
+    padding-bottom: $rem;
+  }
+
+  // Padding Top & Bottom
+  .yot-content-space-ptb-#{$value} {
+    padding: $rem 0;
+  }
+
+}

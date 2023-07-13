@@ -1,0 +1,90 @@
+// Nav Desktop
+.yot-nav-active{
+    a{
+        color: $yot-white;
+        cursor: pointer;
+        margin: 0px 8px;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease; /* Add transition */
+    }
+
+    a:hover{
+        border-bottom: 2px solid $yot-white;
+    }
+}
+
+.yot-curve{
+    width: 200px;
+    top: 35px;
+    left: -60px;
+    a{
+        margin-bottom: 8px;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease; /* Add transition */
+    }
+
+    a:last-child {
+        margin-bottom: 0px;
+    }
+
+    a:hover{
+        border-bottom: 2px solid $yot-white;
+    }
+}
+
+.yot-curve:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-top: none;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid $yot-black3;
+}
+
+// Animate Angle
+.yot-icon-angle{
+    transition: all 0.3s ease; /* Add transition */
+}
+
+.yot-icon-angle-rotate-90-deg{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    transform-origin: 50% 50%;
+}
+
+// Nav Mobile
+.yot-nav-active-mobile{
+    a{
+        margin-bottom: 16px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease; /* Add transition */
+    }
+
+    // a:hover{
+    //     border-bottom: 2px solid $yot-white;
+    // }
+}
+
+.yot-curve-mobile{
+    width: 250px;
+    
+    a{
+        margin-bottom: 8px;
+        font-size: 16px !important;
+    }
+
+    a:last-child {
+        margin-bottom: 0px;
+    }
+}
+
+
+

@@ -1,0 +1,58 @@
+// Main Bg
+.yot-overlay-bg-trans{
+    position: fixed;
+    inset: 0;
+    opacity: 0.5 !important;
+    width: 100%;
+    height: 100vh;
+    background-color: $yot-black3;
+}
+
+
+// Left Only
+.yot-overlay-left{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 75%;
+}
+
+// Right Only
+.yot-overlay-right{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+// Mid Only
+.yot-overlay-mid-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.yot-overlay-mid-child{
+    position: relative;
+    width: 300px;
+}
+
+// Dont Remove Top
+.yot-overlay-mid-container-half{
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 300px;
+    margin: 0 auto;
+}
+

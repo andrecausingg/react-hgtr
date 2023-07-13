@@ -1,0 +1,105 @@
+/* Box sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Margin and padding */
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Typography */
+body {
+    font-size: $yot-fs-sm; /* 16px */
+    font-size: 16px;
+    line-height: 1.3;
+    font-family: $yot-rhas;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+/* Links */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Lists */
+ol, ul {
+    list-style: none;
+}
+
+/* Forms */
+input, button, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ok to Modified */
+h1{font-size: 2.25rem;} /* 36px */
+h2{font-size: 1.875rem;} /* 30px */
+h3{font-size: 1.5rem;} /* 24px */
+h4{font-size: 1.125rem;} /* 18px */
+h5{font-size: 0.875rem;} /* 14px */
+h6{font-size: 0.75rem;} /* 12px */
+
+
+// html {
+//     font-size: 100%;
+//     box-sizing: border-box;
+//     scroll-behavior: smooth;
+// }
+  
+// *,*::before,*::after {
+//     box-sizing: inherit;
+// }
+  
+// body {
+//     margin: 0;
+//     padding: 0;
+
+//     /* Ok to Modified */
+//     line-height: 1.3;
+//     font-size: $yot-fs-sm; /* 16px */
+//     // font-family: 'Roboto', Helvetica, Arial, sans-serif;
+//     font-family: "Segoe UI",Arial,sans-serif;
+//     font-weight: 400;
+//     // color: $yot-white; 
+//     // background-color: $yot-black1;
+// }
+
+// /* Okay to Modified */
+// a, a:visited, a:hover {
+//   text-decoration: none;
+// }
+
+
+
+// p,h1,h2,h3,h4,h5,h6,span{
+//     margin: 0;
+// }
+
+// ul{
+//     list-style-type:none;
+//     padding:0;
+//     margin:0
+// }
+
+// img{
+//     width: 100%;
+//     display: block;
+// }
+
+// i{
+//     cursor: pointer;
+// }

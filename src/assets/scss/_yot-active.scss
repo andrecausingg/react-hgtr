@@ -1,0 +1,53 @@
+.yot-active-hb-black2{
+    cursor: pointer;
+    margin-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease; /* Add transition */
+}
+
+.yot-active-hb-black2:hover{
+    border-bottom: 2px solid $yot-black2 !important;
+}
+
+//
+.yot-active-bb-blue1{
+    border-bottom: 2px solid $yot-blue1 !important;
+}
+
+//
+.yot-active-bb-white{
+    border-bottom: 2px solid $yot-white !important;
+}
+
+//
+.yot-active-bb-black3{
+    border-bottom: 2px solid $yot-black3 !important;
+}
+
+// Active Background Color 
+.yot-active-bc-black4{
+    background-color: $yot-black4;
+}
+
+// Active Hover bottom
+.yot-active-hb-black4{
+    cursor: pointer;
+    margin-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease; /* Add transition */
+}
+
+.yot-active-hb-black4:hover{
+    border-bottom: 2px solid $yot-black4 !important;
+}
+
+.yot-active-hb-blue1{
+    cursor: pointer;
+    margin-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease; /* Add transition */
+}
+
+.yot-active-hb-blue1:hover{
+    border-bottom: 2px solid $yot-blue1 !important;
+}

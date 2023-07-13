@@ -1,0 +1,153 @@
+.yot-table-blue1-theme{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+  
+.yot-table-blue1-theme td, .yot-table-blue1-theme th {
+    // border: 1px solid $yot-blue1;
+    padding: 8px;
+}
+
+.yot-table-blue1-theme tr:nth-child(even){background-color: #f2f2f2;}
+
+.yot-table-blue1-theme tr:hover {background-color: #ddd;}
+
+.yot-table-blue1-theme th {
+    position: sticky;
+    top: 0; /* Don't forget this, required for the stickiness */
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: $yot-blue1;
+    color: $yot-white;
+    
+}
+
+
+.yot-table-black3-theme{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+  
+.yot-table-black3-theme td, .yot-table-black3-theme th {
+    // border: 1px solid $yot-blue1;
+    padding: 8px;
+}
+
+.yot-table-black3-theme tr:nth-child(even){background-color: #f2f2f2;}
+
+.yot-table-black3-theme tr:hover {background-color: #ddd;}
+
+.yot-table-black3-theme th {
+    position: sticky;
+    top: 0; /* Don't forget this, required for the stickiness */
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: $yot-black3;
+    color: $yot-white;
+    
+}
+
+.yot-styled-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    font-weight: bold;
+    background-color: #ffffff;
+}
+
+.yot-styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;#yot-table-black3-theme {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#yot-table-black3-theme td, #yot-table-black3-theme th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#yot-table-black3-theme tr:nth-child(even){background-color: #f2f2f2;}
+
+#yot-table-black3-theme tr:hover {background-color: #ddd;}
+
+#yot-table-black3-theme th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+    text-align: left;
+}
+
+
+.yot-styled-table th,
+.yot-styled-table td {
+    padding: 12px 15px;
+}
+
+.yot-styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.yot-styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.yot-styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.yot-styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+// 
+
+.yot-styled-table-remarks {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.yot-styled-table-remarks thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.yot-styled-table-remarks th,
+.yot-styled-table-remarks td {
+    padding: 12px 15px;
+}
+
+.yot-styled-table-remarks tbody tr {
+    border-bottom: 1px solid #dddddd;
+    text-align: left;
+}
+
+.yot-styled-table-remarks tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.yot-styled-table-remarks tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+

@@ -1,0 +1,32 @@
+$yot-margin-values: (
+  0: 0rem,
+  4: 0.25rem,
+  8: 0.5rem,
+  16: 1rem,
+  24: 1.5rem,
+  48: 3rem,
+);
+
+@each $value, $size in $yot-margin-values {
+  .yot-mt-#{$value} {
+    margin-top: $size;
+  }
+  .yot-mr-#{$value} {
+    margin-right: $size;
+  }
+  .yot-mb-#{$value} {
+    margin-bottom: $size;
+  }
+  .yot-ml-#{$value} {
+    margin-left: $size;
+  }
+  .yot-mtb-#{$value} {
+    margin: $size 0 $size;
+  }
+  .yot-mlr-#{$value} {
+    margin: 0 $size 0 $size;
+  }
+  .yot-ma-#{$value} {
+    margin: $size;
+  }
+}

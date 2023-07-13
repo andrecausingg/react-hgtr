@@ -1,0 +1,105 @@
+.yot-bg{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.yot-hidden{
+    display: none;
+}
+
+.yot-show{
+    display: block;
+}
+
+// Visibility Hide on Mobile
+.yot-hide-for-mobile {
+    @include breakpoint-down(large-laptop) {
+        display: none !important;
+    }
+}
+  
+// Visibility Hide on Desktop
+.yot-hide-for-desktop {
+    @include breakpoint-up(large-laptop) {
+        display: none !important;
+    }
+}
+// Dont Remove Top
+
+// Visibility Hide on Mobile down
+.yot-hide-for-small-mobile-down{ /* 576px */ /* Small devices (portrait tablets and large phones)*/
+    @include breakpoint-down(small-mobile) {
+        display: none !important;
+    }
+}
+
+// Visibility Hide on Mobile up
+.yot-hide-for-small-mobile-up{ /* 576px */ /* Small devices (portrait tablets and large phones)*/
+    @include breakpoint-up(small-mobile) {
+        display: none !important;
+    }
+}
+
+// Visibility Hide on tablet down
+.yot-hide-for-tablet-down{ /* 768px */ /* Medium devices (landscape tablets) */
+    @include breakpoint-down(medium-tablet) {
+        display: none !important;
+    }
+}
+
+// Visibility Hide on tablet up
+.yot-hide-for-tablet-up{  /* 768px */ /* Medium devices (landscape tablets) */
+    @include breakpoint-up(medium-tablet) {
+        display: none !important;
+    }
+}
+
+// Visibility Hide on large-laptop up 
+.yot-hide-for-large-laptop-up{ /* 992px */ /* Large devices (laptops/desktops) */
+    @include breakpoint-up(large-laptop) {
+        display: none !important;
+    }
+}
+
+// Visibility Hide on large-laptop down
+.yot-hide-for-large-laptop-down{ /* 992px */ /* Large devices (laptops/desktops) */
+    @include breakpoint-down(large-laptop) {
+        display: none !important;
+    }
+}
+
+// Visibility Hide on extra large-laptop up 
+.yot-hide-for-x-large-laptop-up{ /* 1200px */ /* Extra large devices (large laptops and desktops) */
+    @include breakpoint-up(xlarge-desktop) {
+        display: none !important;
+    }
+}
+
+// Visibility Hide on extra large-laptop down
+.yot-hide-for-x-large-laptop-down{ /* 1200px */ /* Extra large devices (large laptops and desktops) */
+    @include breakpoint-down(xlarge-desktop) {
+        display: none !important;
+    }
+}
+
+
+// Flex Col
+.yot-row-x-large-desktop{
+    @include breakpoint-up(xlarge-desktop) {
+        display: flex ;
+    }
+}
+
+.yot-flex-medium-tablet{
+    @include breakpoint-up(medium-tablet) {
+        display: flex;
+    }
+}
+

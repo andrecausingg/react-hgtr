@@ -1,0 +1,24 @@
+// Mixin for generating font-size classes
+@mixin font-size($name, $size) {
+  .yot-text-fs-#{$name} {
+    font-size: $size;
+  }
+}
+
+// Map of font-size class names and sizes
+$font-sizes: (
+  t: $yot-fs-t,
+  xsm: $yot-fs-xsm,
+  sm: $yot-fs-sm,
+  m: $yot-fs-m,
+  l: $yot-fs-l,
+  xl: $yot-fs-xl,
+  xxl: $yot-fs-xxl,
+  jsm: $yot-fs-jsm,
+  jm: $yot-fs-jm
+);
+
+// Loop through the map and generate font-size classes
+@each $name, $size in $font-sizes {
+  @include font-size($name, $size);
+}

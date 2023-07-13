@@ -1,0 +1,75 @@
+// Basic cursor types
+.yot-cursor-auto {
+    cursor: auto;
+}
+
+.yot-cursor-default {
+    cursor: default;
+}
+
+.yot-cursor-pointer {
+    cursor: pointer;
+}
+
+.yot-cursor-wait {
+    cursor: wait;
+}
+
+.yot-cursor-text {
+    cursor: text;
+}
+
+.yot-cursor-move {
+    cursor: move;
+}
+
+// Link-related cursor types
+.yot-cursor-help {
+    cursor: help;
+}
+
+.yot-cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.yot-cursor-grab {
+    cursor: grab;
+}
+
+.yot-cursor-grabbing {
+    cursor: grabbing;
+}
+
+// Resize-related cursor types
+.yot-cursor-resize-vertical {
+    cursor: ns-resize;
+}
+
+.yot-cursor-resize-horizontal {
+    cursor: ew-resize;
+}
+
+.yot-cursor-resize-diagonal-top-right {
+    cursor: ne-resize;
+}
+
+.yot-cursor-resize-diagonal-top-left {
+    cursor: nw-resize;
+}
+
+.yot-cursor-resize-diagonal-bottom-right {
+    cursor: se-resize;
+}
+
+.yot-cursor-resize-diagonal-bottom-left {
+    cursor: sw-resize;
+}
+
+// Zoom-related cursor types
+.yot-cursor-zoom-in {
+    cursor: zoom-in;
+}
+
+.yot-cursor-zoom-out {
+    cursor: zoom-out;
+}
