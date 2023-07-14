@@ -168,7 +168,7 @@ const Header = () => {
         {/* <!-- Nav --> */}
         <nav className="yot-container yot-pa-16 yot-flex yot-flex-ai-c-jc-sb">
           {/* <!-- Logo --> */}
-          <Link to="/" className="yot-flex yot-flex-ai-c-jc-c">
+          <Link to="#" className="yot-flex yot-flex-ai-c-jc-c">
             <img src={hgtrLogo} alt="Hugutero Logo Black" style={{ width: "150px" }} />
           </Link>
 

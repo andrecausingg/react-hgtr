@@ -139,7 +139,7 @@ const NavMobileOverlay = ({ onClose }) => {
       <div className="yot-overlay-left yot-bg-black2 yot-pa-16 yot-hide-for-x-large-laptop-up yot-tc-white yot-vh-100 yot-scrollbar-white yot-animate-slide-right" style={{overflowY:"auto"}}>
         <div className="yot-flex yot-flex-fd-c yot-text-fs-xxl yot-nav-active-mobile">
           {/* <!-- Logo --> */}
-          <Link to="/">
+          <Link to="#">
             <img 
               src={hgtrLogo} 
               alt="Hugutero Logo Black" 
@@ -148,7 +148,7 @@ const NavMobileOverlay = ({ onClose }) => {
 
           {/* Home */}
           <Link
-            to="/"
+            to="/react-hgtr/"
             style={{ overFlow: "hidden" }}
             onClick={() => setActiveLink('home')}
           >
