@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 // Images Icon
 import envelopeIcon from '../images/icons/envelope-solid.svg';
@@ -34,24 +35,12 @@ const Signup = ({ onClose }) => {
   // Btn Sign Up Click
   const [isBtnFormClick, setBtnFormClick] = useState(false);
 
-  // 
-  const [csrfToken, setCsrfToken] = useState('');
+  // Btn Active Btn
+  const [isBtnFormClickActive, setBtnFormClickActive] = useState(false);
 
-  // CSRF token setup
-  // useEffect(() => {
-  //   // Fetch the CSRF token from the Laravel backend
-  //   const fetchCsrfToken = async () => {
-  //     try {
-  //       const response = await axios.get('http://127.0.0.1:8000/api/csrf-token', { withCredentials: true });
-  //       setCsrfToken(response.data.csrf_token);
-  //     } catch (error) {
-  //       console.error('Failed to fetch CSRF token:', error);
-  //     }
-  //   };
+  // Disable Password And Confirm Password if Sending Verificatioon Code
+  const [isSendingCode, setSendingCode] = useState(false);
 
-  //   fetchCsrfToken();
-  // }, []);
-  
   // Hide All Form Authenticate
   const handleClickCloseIcon = () => {
     onClose();
@@ -59,39 +48,68 @@ const Signup = ({ onClose }) => {
 
   // Handle Email
   const handleEmailChange = (e) => {
-    const pastedText = e.clipboardData?.getData('text');
-    const value = pastedText || e.target.value;
-    setEmail(value);
-    setIsValidEmail(validateEmail(value));
-    console.log(email);
+    const email = e.clipboardData?.getData('text') || e.target.value;
+    setEmail(email);
+    setIsValidEmail(validateEmail(email));
 
-    if(email !== "") setEmailEmpty(false);
+    if (email !== "") setEmailEmpty(false);
 
-    if(isValidEmail && email !== ""){
-        setEmailExist(false);
-        setEmailEmpty(false);
+    if (validateEmail && email !== "") {
+      const generatedToken = uuidv4();
+      setEmailExist(false);
+      setEmailEmpty(false);
 
-        axios.put('http://127.0.0.1:8000/api/email-exist',{        
-          email: email
-        })
-        .then((response) => {
-          console.log(response.data.message);
-          // Handle the response from the API
-          // For example, update the UI or perform any other desired action
-          if(response.data.message === "sent"){
-            window.location.href = '/email-verification';
-          }
-        })
-        .catch((error) => {
-            // Handle any error that occurs during the request
-            if (error.response && error.response.data) {
-              console.log(error.response.data.email);
-            } else {
-              console.error('An error occurred during the request.');
-            }
-        });
+      // Disabled input passwowrd and confirm password
+      axios
+      .get('http://127.0.0.1:8000/api/email-exist-send-message', {
+        params: {
+          email: email // Replace with the desired email
+        }
+      })
+      .then(response => {
+        const { data } = response;
+        if (data.message === 'disabledPass') {
+          setSendingCode(true);
+          setBtnFormClickActive(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response && error.response.data) {
+          console.log(error.response.data.message);
+        } else {
+          console.error('An error occurred during the request.');
+        }
+      });
+
+      // Send Verification Code
+      axios
+      .put('http://127.0.0.1:8000/api/email-exist', {
+        email: email,
+        sessionVerifiyEmail: generatedToken
+      })
+      .then((response) => {
+        console.log(response.data.message);
+        // Handle the response from the API
+        // For example, update the UI or perform any other desired action
+        if (response.data.message === "sent") {
+          sessionStorage.setItem('email', email);
+          sessionStorage.setItem('emailVerifyToken', generatedToken);
+          window.location.href = '/email-verification';
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        // Handle any error that occurs during the request
+        if (error.response && error.response.data) {
+          console.log(error.response.data.email);
+        } else {
+          console.error('An error occurred during the request.');
+        }
+      });
     }
-  }
+  };
+
   const validateEmail = (email) => {
     // regular expression to check if the email is valid
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -100,16 +118,32 @@ const Signup = ({ onClose }) => {
   
   // Handle Password
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    if(password !== "") setPasswordEmpty(false);
-    if(password.length > 7) setPasswordLess(false);
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    
+    if (newPassword.trim() !== "") {
+      setPasswordEmpty(false);
+      
+      if (newPassword.length > 7) {
+        setPasswordLess(false);
+      }
+    }
   }
+  
   // Handle Confirm Password
   const handlePasswordConfirmChange = (e) => {
-    setPasswordConfirm(e.target.value);
-    if(passwordConfirm !== "") setConfirmPasswordEmpty(false);
-    if(passwordConfirm.length > 7) setConfirmPassworLess(false);
+    const newConfirmPassword = e.target.value;
+    setPasswordConfirm(newConfirmPassword);
+    
+    if (newConfirmPassword.trim() !== "") {
+      setConfirmPasswordEmpty(false);
+      
+      if (newConfirmPassword.length > 7) {
+        setConfirmPassworLess(false);
+      }
+    }
   }
+  
   // Display Password Icon
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -122,80 +156,64 @@ const Signup = ({ onClose }) => {
   // Form Handle
   const handleSubmit = (e) => {
     e.preventDefault();
-
     // Email Err
-    if(email === ""){
-      setEmailEmpty(true);
-    }
-    if(!isValidEmail){
-      setIsValidEmail(true);
-    }
-
+    if (email === "") setEmailEmpty(true);
+    if (!isValidEmail) setIsValidEmail(true);
+  
     // Password Err
-    if(password !== "" && password.length <= 7){
-      setPasswordLess(true);
-    }
-    if(password === ""){
-      setPasswordEmpty(true);
+    if (password === "") setPasswordEmpty(true);
+    if (password !== "" && password.length <= 7){
+      if(isPasswordLess == false) setPasswordLess(true);
     }
 
     // Confirm Pass Err
-    if(passwordConfirm === ""){
-      setConfirmPasswordEmpty(true);
-    }
-    if(passwordConfirm !== "" && passwordConfirm.length <= 7){
-      setConfirmPassworLess(true);
-    }
-
+    if (passwordConfirm === "") setConfirmPasswordEmpty(true);
+    if (passwordConfirm !== "" && passwordConfirm.length <= 7){
+      if(isConfirmPassworLess == false) setConfirmPassworLess(true);
+    } 
+  
     // Goods
-    if(isValidEmail && email !== "" && password.length >= 8 && password !== "" && passwordConfirm.length >= 8 && passwordConfirm !== "" && password == passwordConfirm){
+    if (
+      isValidEmail &&
+      email !== "" &&
+      password.length >= 8 &&
+      password !== "" &&
+      passwordConfirm.length >= 8 &&
+      passwordConfirm !== "" &&
+      password === passwordConfirm
+    ) {
+      const generatedToken = uuidv4();
       setBtnFormClick(true);
-      axios.get('http://127.0.0.1:8000/csrf-token')
+      setBtnFormClickActive(true);
+
+      axios
+      .post('http://127.0.0.1:8000/api/signup', {
+        email: email,
+        password: password,
+        sessionVerifiyEmail: generatedToken
+      })
       .then(response => {
-        const csrfToken = response.data.csrf_token;
-    
-        axios.post(
-          'http://127.0.0.1:8000/api/signup',
-          { email, password },
-          {
-            headers: {
-              'X-CSRF-TOKEN': csrfToken,
-              'Content-Type': 'application/json',
-            },
-          }
-        )
-        .then(response => {
-          // Handle the response from the API
-          // For example, update the UI or perform any other desired action
-          console.log(response);
-          if (response.status === 201) {
-            window.location.href = '/email-verification';
-          }
-        })
-        .catch(error => {
-          setBtnFormClick(false);
-    
-          // Handle any error that occurs during the request
-          if (error.response && error.response.status) {
-            if (error.response.status === 400) {
-              const { email, password } = error.response.data.errors;
-              // Handle the error messages
-              // ...
-            }
-          } else {
-            console.error('An error occurred during the request.');
-          }
-        });
+        const { data } = response;
+        console.log(data);
+        if(data.message === 'created'){
+          sessionStorage.setItem('email', email);
+          sessionStorage.setItem('emailVerifyToken', generatedToken);
+          window.location.href = '/email-verification';
+        }
       })
       .catch(error => {
-        console.error('An error occurred while retrieving the CSRF token.');
+        setBtnFormClick(false);
+        setBtnFormClickActive(false);
+        const { response } = error;
+        const { data } = response;
+        if (data.errors && data.errors.email && data.errors.email[0] === 'The email field is required.') setEmailEmpty(true);
+        if (data.errors && data.errors.email && data.errors.email[0] === 'Please enter a valid email address.') setIsValidEmail(false);
+        if (data.errors && data.errors.email && data.errors.email[0] === 'The email address already exists.') setEmailExist(true);
+        if (data.errors && data.errors.password && data.errors.password[0] === 'The password field is required.') setPasswordEmpty(true);
+        if (data.errors && data.errors.password && data.errors.password[0] === 'The password must be at least 8 characters long.') setPasswordLess(true);
       });
-    
-
       return;
     }
-
-    setBtnFormClick(false);
   }
 
   return (
@@ -273,11 +291,13 @@ const Signup = ({ onClose }) => {
                       ${password !== "" && password.length >= 8 ? 'yot-form-input-good' : ''} 
                       ${password !== "" && password.length < 8 ? 'yot-form-input-bad' : ''} 
                       ${password !== "" && passwordConfirm !== "" && password !== passwordConfirm ? 'yot-form-input-bad' : ''}
-                      ${isPasswordEmpty === true ? 'yot-form-input-bad' : ''}`
+                      ${isPasswordEmpty === true ? 'yot-form-input-bad' : ''}
+                      ${isSendingCode === true ? 'yot-form-input-disabled' : ''} `
                     }
                     type={showPassword ? 'text' : 'password'}
                     style={{ padding: '14px 38px' , borderRadius:'8px'}}
                     value={password}
+                    disabled={isSendingCode ? "disabled" : ""}
                     onChange={handlePasswordChange}
                   />
   
@@ -310,11 +330,13 @@ const Signup = ({ onClose }) => {
                       ${passwordConfirm !== "" && passwordConfirm.length >= 8 ? 'yot-form-input-good' : ''} 
                       ${passwordConfirm !== "" && passwordConfirm.length < 8 ? 'yot-form-input-bad' : ''} 
                       ${password !== "" && passwordConfirm !== "" && password !== passwordConfirm ? 'yot-form-input-bad' : ''}
-                      ${isConfirmPasswordEmpty === true ? 'yot-form-input-bad' : ''}`
+                      ${isConfirmPasswordEmpty === true ? 'yot-form-input-bad' : ''}
+                      ${isSendingCode === true ? 'yot-form-input-disabled' : ''} `
                     }
                     type={showPasswordConfirm ? 'text' : 'password'}
                     style={{ padding: '14px 38px' , borderRadius:'8px'}}
                     value={passwordConfirm}
+                    disabled={isSendingCode ? "disabled" : ""}
                     onChange={handlePasswordConfirmChange}
                   />
                   <img className="yot-form-group-icon-left" src={lockIcon} alt="" width="36px" />
@@ -330,10 +352,11 @@ const Signup = ({ onClose }) => {
                 {/* <!-- Submit --> */}
                 <div className="yot-text-center">
                   <button 
-                    className="yot-btn-black2" 
-                    style={{border: "1px solid black"}}
+                    className={`yot-btn-black2 ${isBtnFormClickActive === true ? 'yot-btn-black2-active' : ''}`}
+                    style={{ border: "1px solid black", cursor: isSendingCode ? "not-allowed" : "pointer" }}
+                    disabled={isSendingCode === true ? "disabled" : ""}
                   >
-                      {isBtnFormClick ? 'Signing Up...' : 'Sign Up'}
+                      {isBtnFormClick || isSendingCode ? 'Signing Up...' : 'Sign Up'}
                   </button>
                 </div>
               </form>

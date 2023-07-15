@@ -579,6 +579,11 @@ h6 {
   background-color: hsl(0, 0%, 0%);
 }
 
+.yot-btn-black2-active {
+  color: hsl(0, 0%, 100%) !important;
+  background-color: hsl(0, 0%, 0%) !important;
+}
+
 .yot-btn-active-blue1 {
   color: hsl(0, 0%, 100%) !important;
   background-color: hsl(221, 70%, 45%) !important;

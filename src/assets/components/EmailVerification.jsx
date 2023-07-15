@@ -1,13 +1,46 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const VerificationForm = () => {
   const [code, setCode] = useState('');
   const [resendTimer, setResendTimer] = useState(0);
   const [isShowBtn, setIsShowBtn] = useState(true);
 
+  // Check token to verify Email
+  useEffect(() => {
+    // Retrieve data from sessionStorage
+    const email = sessionStorage.getItem('email');
+    const emailVerifyToken = sessionStorage.getItem('emailVerifyToken');
+
+    if (emailVerifyToken !== null) {
+      axios
+        .post('http://127.0.0.1:8000/api/email-verify-token-is-exist', {
+          email: email,
+          emailVerifyToken: emailVerifyToken
+        })
+        .then(response => {
+          const { data } = response;
+          if (data === 'badToken') {
+            window.location.href = '/react-hgtr/';
+          }
+        })
+        .catch(error => {
+          if (error.response && error.response.data && error.response.data.errors) {
+            const errorMessages = error.response.data.errors;
+            console.log(errorMessages.email);
+            // Handle other error messages if needed
+          } else {
+            console.error('An error occurred during the request.');
+          }
+        });
+    } else {
+      window.location.href = '/react-hgtr/';
+    }
+  }, []); // Empty dependency array to run the effect only once
+
   const handleResendClick = () => {
     let maxResendCount = parseInt(localStorage.getItem('resendCount')) || 0;
-    let defaultTime = 30;
+    let defaultTime = 25;
   
     if (maxResendCount <= 1) {
       maxResendCount++;
@@ -17,8 +50,13 @@ const VerificationForm = () => {
       if (!isNaN(storedResendIncSec)) {
         let plusFiveSec = storedResendIncSec + 5;
         let countNowStoreSec = defaultTime + plusFiveSec;
-        localStorage.setItem('resendIncSec', plusFiveSec.toString());
-        setResendTimer(countNowStoreSec);
+        if (plusFiveSec >= 180) {
+          localStorage.setItem('resendIncSec', 'stop');
+          setResendTimer(countNowStoreSec);
+        } else {
+          localStorage.setItem('resendIncSec', plusFiveSec.toString());
+          setResendTimer(countNowStoreSec);
+        }
         setIsShowBtn(false);
       } else {
         let plusFiveSec = 5;
@@ -46,18 +84,18 @@ const VerificationForm = () => {
         });
       }, 1000);
     };
-
+  
     // Display the time if refresh the page
-    if (!isNaN(storedResendTimer)){
+    if (!isNaN(storedResendTimer)) {
       setResendTimer(storedResendTimer);
       setIsShowBtn(false);
       startCountdown();
     }
-    
-    if(!isNaN(storedResendTimer) && storedResendTimer == 1){
+  
+    if (!isNaN(storedResendTimer) && storedResendTimer === 1) {
       setIsShowBtn(true);
       setResendTimer();
-    } 
+    }
   
     return () => {
       clearInterval(timer);
@@ -70,14 +108,20 @@ const VerificationForm = () => {
     localStorage.setItem('resendTimer', secs);
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
-
+  
   const handleCodeChange = (event) => {
-    setCode(event.target.value);
+    const inputValue = event.target.value;
+    const numbersOnly = inputValue.replace(/[^0-9]/g, ''); // Remove any non-numeric characters
+  
+    setCode(numbersOnly);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission here
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if(code === ''){
+
+    }
   };
 
   return (
@@ -118,7 +162,7 @@ const VerificationForm = () => {
             </div>
             <div className="yot-form-group">
               <input
-                className="yot-form-input"
+                className="yot-form-input yot-text-center"
                 type="text"
                 style={{borderRadius:'8px'}}
                 maxLength={6}
