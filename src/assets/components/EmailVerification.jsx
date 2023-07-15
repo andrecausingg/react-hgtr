@@ -9,6 +9,8 @@ const VerificationForm = () => {
   const [isCodeSent, setCodeSent]  = useState(false);
   const [isCodeWrong, setCodeWrong]  = useState(false);
 
+  //
+  const [isSendingCode, setSendingCode] = useState(false);
 
   // Check token to verify Email
   useEffect(() => {
@@ -45,10 +47,49 @@ const VerificationForm = () => {
     }
   }, []); // Empty dependency array to run the effect only once
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+    setCodeSent(false);
+  }, 3000);
+
+    // Cleanup the timer when the component unmounts or when codeSent becomes true
+    return () => clearTimeout(timer);
+  }, []); // Empty dependency array ensures that the effect runs only once on initial render
+
+  // Handle Resend Click
   const handleResendClick = () => {
     let maxResendCount = parseInt(localStorage.getItem('resendCount')) || 0;
     let defaultTime = 25;
-  
+
+    const email = sessionStorage.getItem('email');
+    const emailVerifyToken = sessionStorage.getItem('emailVerifyToken');
+
+    setSendingCode(true);
+
+    axios
+    .put('http://127.0.0.1:8000/api/resend-code', {
+      email: email,
+      emailVerifyToken: emailVerifyToken
+    })
+    .then(response => {
+      const { data } = response;
+      console.log(data)
+      if (data.message === 'sent') {
+        setCodeSent(true);
+        setSendingCode(false);
+      }
+    })
+    .catch(error => {
+      console.log(error)
+      if (error.response && error.response.data && error.response.data.errors) {
+        const errorMessages = error.response.data.errors;
+        console.log(errorMessages.email);
+        // Handle other error messages if needed
+      } else {
+        console.error('An error occurred during the request.');
+      }
+    });
+
     if (maxResendCount <= 1) {
       maxResendCount++;
       localStorage.setItem('resendCount', maxResendCount.toString());
@@ -140,10 +181,6 @@ const VerificationForm = () => {
         const email = sessionStorage.getItem('email');
         const emailVerifyToken = sessionStorage.getItem('emailVerifyToken');
 
-        console.log(email);
-        console.log(emailVerifyToken);
-
-
         // Send Verification Code
         axios
         .put('http://127.0.0.1:8000/api/verify-email', {
@@ -183,7 +220,6 @@ const VerificationForm = () => {
           <div className="yot-mb-8 yot-text-center">
             <h3>Email Verification</h3>
           </div>
-          <form onSubmit={handleSubmit}>
             <div className="yot-flex yot-flex-ai-c-jc-sb yot-mb-8">
               <label htmlFor="verificationCode">
                 <b>Verification Code</b>
@@ -194,13 +230,14 @@ const VerificationForm = () => {
                   style={{ border: '1px solid black' }}
                   onClick={handleResendClick}
                 >
-                  Resend
+                  {isSendingCode ? 'Sending Code...' : 'Resend'}
                 </button>
               )}
               {resendTimer > 0 ? (
                 <span className="yot-text-fs-xsm">Resend After {formatTime(resendTimer)}</span>
               ) : null}
             </div>
+          <form onSubmit={handleSubmit}>
             <div className="yot-flex yot-flex-fd-c-ai-c-jc-c">
               {isCodeSent && (
                 <span className="yot-tc-green"> Verification code has been sent. </span>
@@ -227,7 +264,11 @@ const VerificationForm = () => {
               />
             </div>
             <div className="yot-text-center">
-              <button className="yot-btn-black2" style={{ border: '1px solid black' }} type="submit">
+              <button 
+                className="yot-btn-black2" 
+                style={{ border: '1px solid black' }}
+                type="submit"
+              >
                 Submit
               </button>
             </div>
