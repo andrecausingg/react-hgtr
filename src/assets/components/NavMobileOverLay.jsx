@@ -135,8 +135,8 @@ const NavMobileOverlay = ({ onClose }) => {
 
   return (
     <>
-      <div className="yot-overlay-bg-trans yot-animate-slide-right yot-hide-for-x-large-laptop-up" onClick={handleOverlayClick}></div>
-      <div className="yot-overlay-left yot-bg-black2 yot-pa-16 yot-hide-for-x-large-laptop-up yot-tc-white yot-vh-100 yot-scrollbar-white yot-animate-slide-right" style={{overflowY:"auto"}}>
+      <div className="yot-overlay-bg-trans yot-animate-slide-right yot-hide-for-x-large-laptop-up yot-z-index-1" onClick={handleOverlayClick}></div>
+      <div className="yot-overlay-left yot-bg-black2 yot-pa-16 yot-hide-for-x-large-laptop-up yot-tc-white yot-vh-100 yot-scrollbar-white yot-animate-slide-right yot-z-index-2" style={{overflowY:"auto"}}>
         <div className="yot-flex yot-flex-fd-c yot-text-fs-xxl yot-nav-active-mobile">
           {/* <!-- Logo --> */}
           <Link to="#">

@@ -74,9 +74,8 @@ const Signup = ({ onClose }) => {
         }
       })
       .catch((error) => {
-        console.log(error);
         if (error.response && error.response.data) {
-          console.log(error.response.data.message);
+
         } else {
           console.error('An error occurred during the request.');
         }
@@ -89,7 +88,6 @@ const Signup = ({ onClose }) => {
         sessionVerifyEmail: generatedToken
       })
       .then((response) => {
-        console.log(response.data.message);
         // Handle the response from the API
         // For example, update the UI or perform any other desired action
         if (response.data.message === "sent") {
@@ -99,10 +97,9 @@ const Signup = ({ onClose }) => {
         }
       })
       .catch((error) => {
-        console.log(error);
         // Handle any error that occurs during the request
         if (error.response && error.response.data) {
-          console.log(error.response.data.email);
+
         } else {
           console.error('An error occurred during the request.');
         }
@@ -194,7 +191,6 @@ const Signup = ({ onClose }) => {
       })
       .then(response => {
         const { data } = response;
-        console.log(data);
         if(data.message === 'created'){
           sessionStorage.setItem('email', email);
           sessionStorage.setItem('emailVerifyToken', generatedToken);

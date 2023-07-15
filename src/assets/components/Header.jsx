@@ -164,7 +164,7 @@ const Header = () => {
   return (
     <>
       {/* <!-- Header --> */}
-      <header className="yot-header yot-bg-black2 yot-z-index-1">
+      <header className="yot-header yot-bg-black2 yot-z-index-3">
         {/* <!-- Nav --> */}
         <nav className="yot-container yot-pa-16 yot-flex yot-flex-ai-c-jc-sb">
           {/* <!-- Logo --> */}
