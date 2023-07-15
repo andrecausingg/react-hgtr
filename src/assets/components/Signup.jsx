@@ -86,7 +86,7 @@ const Signup = ({ onClose }) => {
       axios
       .put('http://127.0.0.1:8000/api/email-exist', {
         email: email,
-        sessionVerifiyEmail: generatedToken
+        sessionVerifyEmail: generatedToken
       })
       .then((response) => {
         console.log(response.data.message);
@@ -190,7 +190,7 @@ const Signup = ({ onClose }) => {
       .post('http://127.0.0.1:8000/api/signup', {
         email: email,
         password: password,
-        sessionVerifiyEmail: generatedToken
+        sessionVerifyEmail: generatedToken
       })
       .then(response => {
         const { data } = response;

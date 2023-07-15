@@ -5,6 +5,10 @@ const VerificationForm = () => {
   const [code, setCode] = useState('');
   const [resendTimer, setResendTimer] = useState(0);
   const [isShowBtn, setIsShowBtn] = useState(true);
+  const [isCodeEmpty, setCodeEmpty]  = useState(false);
+  const [isCodeSent, setCodeSent]  = useState(false);
+  const [isCodeWrong, setCodeWrong]  = useState(false);
+
 
   // Check token to verify Email
   useEffect(() => {
@@ -12,11 +16,13 @@ const VerificationForm = () => {
     const email = sessionStorage.getItem('email');
     const emailVerifyToken = sessionStorage.getItem('emailVerifyToken');
 
-    if (emailVerifyToken !== null) {
+    if (email !== null && emailVerifyToken !== null) {
       axios
-        .post('http://127.0.0.1:8000/api/email-verify-token-is-exist', {
-          email: email,
-          emailVerifyToken: emailVerifyToken
+        .get('http://127.0.0.1:8000/api/email-verify-token-is-exist', {
+          params: {
+            email: email,
+            emailVerifyToken: emailVerifyToken
+          }
         })
         .then(response => {
           const { data } = response;
@@ -33,7 +39,8 @@ const VerificationForm = () => {
             console.error('An error occurred during the request.');
           }
         });
-    } else {
+    }
+    else {
       window.location.href = '/react-hgtr/';
     }
   }, []); // Empty dependency array to run the effect only once
@@ -109,18 +116,60 @@ const VerificationForm = () => {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
   
-  const handleCodeChange = (event) => {
-    const inputValue = event.target.value;
+  // Handle Code
+  const handleCodeChange = (e) => {
+    const inputValue = e.target.value;
     const numbersOnly = inputValue.replace(/[^0-9]/g, ''); // Remove any non-numeric characters
-  
     setCode(numbersOnly);
+
+    if(numbersOnly !== ''){
+      setCodeEmpty(false);
+      setCodeWrong(false);
+    } 
   };
 
+  // Form Verification Code
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if(code === ''){
+    const email = sessionStorage.getItem('email');
+    const emailVerifyToken = sessionStorage.getItem('emailVerifyToken');
 
+    if(code === '') setCodeEmpty(true)
+
+    if(email !== null  && emailVerifyToken !== null && code !== ''){
+        const email = sessionStorage.getItem('email');
+        const emailVerifyToken = sessionStorage.getItem('emailVerifyToken');
+
+        console.log(email);
+        console.log(emailVerifyToken);
+
+
+        // Send Verification Code
+        axios
+        .put('http://127.0.0.1:8000/api/verify-email', {
+          email: email,
+          emailVerifyToken: emailVerifyToken,
+          code: code
+        })
+        .then((response) => {
+          console.log(response.data.message);
+          // Handle the response from the API
+          // For example, update the UI or perform any other desired action
+          if (response.data.message === "verified") {
+            sessionStorage.removeItem('email');
+            sessionStorage.removeItem('emailVerifyToken');
+            window.location.href = '/react-hgtr/';
+          }else{
+            setCodeWrong(true);
+          }
+        })
+        .catch(error => {
+          const { response } = error;
+          const { data } = response;
+          console.log(data);
+        });
+
+        setCodeEmpty(false)
     }
   };
 
@@ -153,16 +202,23 @@ const VerificationForm = () => {
               ) : null}
             </div>
             <div className="yot-flex yot-flex-fd-c-ai-c-jc-c">
-              <span className="yot-tc-green" style={{ display: 'none' }}>
-                Verification code has been sent.
-              </span>
-              <span className="yot-tc-red" style={{ display: 'none' }}>
-                Invalid verification code.
-              </span>
+              {isCodeSent && (
+                <span className="yot-tc-green"> Verification code has been sent. </span>
+              )}
+              {isCodeWrong && (
+                <span className="yot-tc-red"> Invalid verification code.</span>
+              )}
+              {isCodeEmpty && (
+                <span className="yot-tc-red">The Verification Code field is required.</span>
+              )}
             </div>
             <div className="yot-form-group">
               <input
-                className="yot-form-input yot-text-center"
+                className={`yot-form-input yot-text-center
+                      ${isCodeEmpty === true ? 'yot-form-input-bad' : ''} 
+                      ${isCodeWrong === true ? 'yot-form-input-bad' : ''} 
+                      ${code !== '' ? 'yot-form-input-good' : ''} 
+                  `}
                 type="text"
                 style={{borderRadius:'8px'}}
                 maxLength={6}
