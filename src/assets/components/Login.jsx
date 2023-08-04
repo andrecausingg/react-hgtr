@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 // Images Icon
 import envelopeIcon from '../images/icons/envelope-solid.svg';
@@ -58,17 +58,28 @@ const Login = ({ onClose }) => {
   // Form Handle
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const generatedToken = uuidv4();
 
-    try {
-      const response = await axios.post('http://127.0.0.1:8000/api/login', { email, password });
-      const { token } = response.data;
-
-      // Handle successful login
-      console.log('Login successful! Token:', token);
-    } catch (error) {
-      // Handle login error
-      setError('Invalid email or password');
-      console.log('Login error:', error);
+    if(email !== '' && password !== ''){
+      // console.log(email);
+      // console.log(password);
+      // console.log(generatedToken);
+      axios
+      .put('http://127.0.0.1:8000/api/login', {
+        email: email,
+        password: password
+      })
+      .then(response => {
+        const { data } = response;
+        data.message === 'Login successful' ? console.log(data.message) : console.log(data.message);
+        console.log(data.token); 
+      })
+      .catch(error => {
+        const { response } = error;
+        const { data } = response;
+        console.log(data);
+        // data.message === 'Invalid credentials' ?  console.log(data.message) : '';
+      });
     }
   }
 

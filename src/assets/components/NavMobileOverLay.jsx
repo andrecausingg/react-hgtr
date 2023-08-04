@@ -37,42 +37,42 @@ const NavMobileOverlay = ({ onClose }) => {
   // Display Link Regular Link Item
   const regularLinksItem = [
     {
-      to: "/baybayin-tees",
+      to: "/react-hgtr/baybayin-tees",
       text: "Baybayin Tees",
       key: "baybayin-tees"
     },
     {
-      to: "/regular-tees",
+      to: "/react-hgtr/regular-tees",
       text: "Regular Tees",
       key: "regular-tees"
     },
     {
-      to: "/minimalis-tees",
+      to: "/react-hgtr/minimalis-tees",
       text: "Minimalis Tees",
       key: "minimalis-tees"
     },
     {
-      to: "/muscle-tees",
+      to: "/react-hgtr/muscle-tees",
       text: "Muscle Tees",
       key: "muscle-tees"
     },
     {
-      to: "/graphic-tees",
+      to: "/react-hgtr/graphic-tees",
       text: "Graphic Tees",
       key: "graphic-tees"
     },
     {
-      to: "/regular-tie-dye-tees",
+      to: "/react-hgtr/regular-tie-dye-tees",
       text: "Regular Tie-Dye Tees",
       key: "regular-tie-dye-tees"
     },
     {
-      to: "/regular-hodies",
+      to: "/react-hgtr/regular-hodies",
       text: "Regular Hodies",
       key: "regular-hodies"
     },
     {
-      to: "/regular-shorts",
+      to: "/react-hgtr/regular-shorts",
       text: "Regular Shorts",
       key: "regular-shorts"
     }
@@ -81,22 +81,22 @@ const NavMobileOverlay = ({ onClose }) => {
   // Display Link Street Wear Link Item
   const streetWearLinksItem = [
     {
-      to: "/street-wear-tees",
+      to: "/react-hgtr/street-wear-tees",
       text: "Street Wear Tees",
       key: "street-wear-tees"
     },
     {
-      to: "/street-wear-tie-dye-tees",
+      to: "/react-hgtr/street-wear-tie-dye-tees",
       text: "Street Wear Tie-Dye Tees",
       key: "street-wear-tie-dye-tees"
     },
     {
-      to: "/street-wear-acid-wash-tees",
+      to: "/react-hgtr/street-wear-acid-wash-tees",
       text: "Street Wear Acid Wash Tees",
       key: "street-wear-acid-wash-tees"
     },
     {
-      to: "/street-wear-hoodies",
+      to: "/react-hgtr/street-wear-hoodies",
       text: "Street Wear Hoodies",
       key: "street-wear-hoodies"
     },
@@ -105,26 +105,26 @@ const NavMobileOverlay = ({ onClose }) => {
   // Display Link Street Wear Link Item
   const accessoriesLinksItem = [
     {
-      to: "/bags",
+      to: "/react-hgtr/bags",
       text: "Bags",
       key: "bags"
     },
     {
-      to: "/key-chain",
+      to: "/react-hgtr/key-chain",
       text: "Key Chain",
       key: "key-chain"
     },
     {
-      to: "/belt",
+      to: "/react-hgtr/belt",
       text: "Belt",
       key: "belt"
     },
     {
-      to: "/hats",
+      to: "/react-hgtr/hats",
       text: "Hats",
       key: "hats"
     },
-  ];
+  ]; 
 
   // Update active link based on current URL
   useEffect(() => {

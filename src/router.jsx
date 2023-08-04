@@ -2,12 +2,12 @@ import {createBrowserRouter} from "react-router-dom";
 
 // Componets
 import GuestLayout from "./assets/components/GuestLayout";
+import DefaultLayout from "./assets/components/DefaultLayout";
 
 // Views
 import Home from "./assets/views/Home";
 import NotFound from "./assets/views/NotFound";
 import BaybayinTees from "./assets/views/BaybayinTees";
-import DefaultLayout from "./assets/components/DefaultLayout";
 import Faqs from "./assets/views/Faqs";
 import ContactUs from "./assets/views/ContactUs";
 import LookBook from "./assets/views/LookBook";
@@ -25,37 +25,37 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: '/baybayin-tees',
+                path: '/react-hgtr/baybayin-tees',
                 element: <BaybayinTees />
             },
             {
-                path: '/testimonial',
+                path: '/react-hgtr/testimonial',
                 element: <Testimonial />
             },
             {
-                path: '/look-book',
+                path: '/react-hgtr/look-book',
                 element: <LookBook />
             },
             {
-                path: '/contact-us',
+                path: '/react-hgtr/contact-us',
                 element: <ContactUs />
             },
             {
-                path: '/faqs',
+                path: '/react-hgtr/faqs',
                 element: <Faqs />
             },
         ]
     },
     {
-        path: '/email-verification',
+        path: '/react-hgtr/email-verification',
         element: <EmailVerificationPage />
     },
     {
-        path: '/update-password',
+        path: '/react-hgtr/update-password',
         element: <UpdatePasswordPage />
     },
     {
-        path:'/admin',
+        path:'/react-hgtr/admin',
         element: <DefaultLayout />
     },
     {
